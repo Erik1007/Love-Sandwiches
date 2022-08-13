@@ -92,5 +92,21 @@ def main():
     update_worksheet(new_surplus_data, "surplus")
 
 
+def get_last_5_entries_sales():
+    """
+    Getting the last 5 sales entries for each value in the sales 
+    worksheet
+    """
+    sales = SHEET.worksheet("sales")
+    columns = []
+    for ind in range(1, 7):
+        column = sales.col_values(ind)
+        columns.append(column[-5:])
+    
+    return columns
+
+
 print("Welcome to Love Sandwiches data automation")
 main()
+
+sales_columns = get_last_5_entries_sales()
